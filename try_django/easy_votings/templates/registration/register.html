@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>формы регистрации с авторизацией</title>
+ <style>
+a {
+    text-decoration: none; /* Убираем подчёркивание */
+   }
+
+ .floating-button {
+         text-decoration: none;
+         outline: none;
+         display: inline-block;
+         border-color: #ffffff;
+         width: 140px;
+         height: 45px;
+         line-height: 0px;
+         border-radius: 45px;
+         border-color: white
+         margin: 10px 20px;
+         font-family: 'Montserrat', sans-serif;
+         font-size: 11px;
+         text-transform: uppercase;
+         letter-spacing: 3px;
+         font-weight: 600;
+         color: #524f4e;
+         background: white;
+         box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+         transition: .3s;
+
+
+      }
+
+
+      .floating-button:hover {
+         background: #2EE59D;
+         box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+         color: #fff;
+         transform: translateY(-7px);
+
+      }
+  input {
+ outline:none;
+}
+</style>
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="{% static 'easy_votings/css/styles.css'%}" type="text/css">
+
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+
+<body translate="no">
+  <div class="container log-in">
+  <div class="box"></div>
+  <div class="container-forms">
+    <div class="container-info">
+      <div class="info-item">
+        <div class="table">
+          <div class="table-cell">
+            <p>
+              уже есть аккаунт?
+            </p>
+            <div class="btn">
+              <a href="{% url 'login' %}" style="color: white"  >Войти</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="table">
+          <div class="table-cell">
+            <p>
+              у вас нет аккаунта?
+            </p>
+            <div class="btn">
+              создать
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-form">
+      <div class="form-item log-in">
+        <div class="table">
+          <div class="table-cell">
+            <input name="Username" placeholder="Username" type="text"><input name="Password" placeholder="Password" type="Password">
+            <div class="btn">
+              <a href="{% url 'login' %}" style="color: white"  >Войти</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-item sign-up">
+        <div class="table">
+          <div class="table-cell">
+            <form method="post">
+              {% csrf_token %}
+              <input name="username" placeholder="имя пользователя" type="text"><input name="email" placeholder="Почта" type="email"><input name="password" placeholder="Пароль" type="password"><input name="password2" placeholder="Пароль еще раз" type="Password">
+          <div class="button-container">
+            <input type="submit" class="floating-button" value="Зарегистрироваться" >
+          </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <!-- JavaScript includes -->
+		<script src="//code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="{% static 'easy_votings/js/script.js' %}"></script>
+
+    </body>
+</html>
